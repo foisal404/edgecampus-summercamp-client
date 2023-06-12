@@ -1,31 +1,40 @@
-import {  FaMoon } from 'react-icons/fa';
+import { FaMoon } from "react-icons/fa";
 import { BsSun } from "react-icons/bs";
-import navImg from '../../../public/campii.png'
-import { useEffect, useState } from 'react';
+import navImg from "../../../public/campii.png";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const NavHeadBar = () => {
-    //theme set 
-    const [theme, setTheme] = useState(
-        localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
-      );
-    
-      // update state on toggle
-      const handleToggle = (e) => {
-        if (e.target.checked) {
-          setTheme("dark");
-        } else {
-          setTheme("light");
-        }
-      };
-    
-      // set theme state in localstorage on mount & also update localstorage on state change
-      useEffect(() => {
-        localStorage.setItem("theme", theme);
-        const localTheme = localStorage.getItem("theme");
-        // add custom data-theme attribute to html tag required to update theme using DaisyUI
-        document.querySelector("html").setAttribute("data-theme", localTheme);
-      }, [theme]);
+  //theme set
+  const [theme, setTheme] = useState(
+    localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
+  );
 
+  // update state on toggle
+  const handleToggle = (e) => {
+    if (e.target.checked) {
+      setTheme("dark");
+    } else {
+      setTheme("light");
+    }
+  };
+
+  // set theme state in localstorage on mount & also update localstorage on state change
+  useEffect(() => {
+    localStorage.setItem("theme", theme);
+    const localTheme = localStorage.getItem("theme");
+    // add custom data-theme attribute to html tag required to update theme using DaisyUI
+    document.querySelector("html").setAttribute("data-theme", localTheme);
+  }, [theme]);
+
+  const navItems = (
+    <>
+      <li><Link to='/'>Home</Link></li>
+      <li><Link to='/'>Instructors</Link></li>
+      <li><Link to='/'>Classes</Link></li>
+      <li><Link to='/'>Dashboard</Link></li>
+    </>
+  );
 
   return (
     <div className="navbar bg-base-100">
@@ -51,62 +60,30 @@ const NavHeadBar = () => {
             tabIndex={0}
             className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
-            <li>
-              <a>Item 1</a>
-            </li>
-            <li>
-              <a>Parent</a>
-              <ul className="p-2">
-                <li>
-                  <a>Submenu 1</a>
-                </li>
-                <li>
-                  <a>Submenu 2</a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a>Item 3</a>
-            </li>
+            {navItems}
           </ul>
         </div>
         <a className="btn btn-ghost normal-case text-xl">
-            <img src={navImg} alt="" className='w-16 h-10' />
-            edgeCampus</a>
+          <img src={navImg} alt="" className="w-16 h-10" />
+          edgeCampus
+        </a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
-          <li>
-            <a>Item 1</a>
-          </li>
-          <li tabIndex={0}>
-            <details>
-              <summary>Parent</summary>
-              <ul className="p-2">
-                <li>
-                  <a>Submenu 1</a>
-                </li>
-                <li>
-                  <a>Submenu 2</a>
-                </li>
-              </ul>
-            </details>
-          </li>
-          <li>
-            <a>Item 3</a>
-          </li>
+          {navItems}
         </ul>
       </div>
       <div className="navbar-end">
         <button className="btn btn-square btn-ghost">
           <label className="swap swap-rotate w-12 h-12">
-            <input type="checkbox"
-                onChange={handleToggle}
-                // show toggle image based on localstorage theme
-                checked={theme === "light" ? false : true}
+            <input
+              type="checkbox"
+              onChange={handleToggle}
+              // show toggle image based on localstorage theme
+              checked={theme === "light" ? false : true}
             />
-            <BsSun className="w-8 h-8 swap-on" />
-            <FaMoon alt="dark" className="w-8 h-8 swap-off" />
+            <BsSun className="w-6 h-6 swap-on" />
+            <FaMoon alt="dark" className="w-6 h-6 swap-off" />
           </label>
         </button>
       </div>
