@@ -1,4 +1,5 @@
 import {  FaMoon } from 'react-icons/fa';
+import navImg from '../../../public/campii.png'
 const NavHeadBar = () => {
   return (
     <div className="navbar bg-base-100">
@@ -43,7 +44,9 @@ const NavHeadBar = () => {
             </li>
           </ul>
         </div>
-        <a className="btn btn-ghost normal-case text-xl">edgeCampus</a>
+        <a className="btn btn-ghost normal-case text-xl">
+            <img src={navImg} alt="" className='w-16 h-10' />
+            edgeCampus</a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
