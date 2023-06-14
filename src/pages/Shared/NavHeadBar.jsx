@@ -8,7 +8,7 @@ import Swal from "sweetalert2";
 
 const NavHeadBar = () => {
   const {user,logout}=useContext(authProvider);
-  console.log(user);
+  // console.log(user);
   const handleLogout=()=>{
     logout()
     .then(()=>{

@@ -6,9 +6,34 @@ import { authProvider } from "../../provider/AuthContext";
 import Swal from 'sweetalert2'
 
 const Register = () => {
-  const{signUp,updateUser}=useContext(authProvider);
+  const{signUp,updateUser,googleUp}=useContext(authProvider);
     const { register,formState: { errors }, handleSubmit } = useForm();
     const [error,setError]=useState("")
+    const handlegoogleIn=()=>{
+      
+      googleUp()
+      .then((result)=>{
+        const currentUser=result.user;
+        // console.log(currentUser.email);
+        fetch('http://localhost:5000/user',{
+          method:"POST",
+          headers:{
+            "content-type":"application/json"
+          },
+          body:JSON.stringify({email:currentUser?.email})
+        })
+        .then(res=>res.json())
+        .then(data=>{
+          if(data.insertedId){
+            console.log(data);
+
+          }
+        })
+      })
+      .catch(error=>{
+        console.error(error.message);
+      })
+    }
   const onSubmit = data => {
     console.log(data);
     if(data.password!== data.confirm){
@@ -32,6 +57,10 @@ const Register = () => {
             "content-type":"application/json"
           },
           body:JSON.stringify({email})
+        })
+        .then(res=>res.json())
+        .then(data=>{
+          console.log(data);
         })
         Swal.fire({
           position: 'top-end',
@@ -105,8 +134,8 @@ const Register = () => {
                 
               </div>
               <label className="label">
-                  <Link to='/registration' className="label-text-alt link link-hover">
-                    New Here?go to register
+                  <Link to='/login' className="label-text-alt link link-hover">
+                    already register ? go to login
                   </Link>
                 </label>
               <div className="form-control mt-6">
@@ -115,7 +144,7 @@ const Register = () => {
             </form>
             <div className="card-body pt-1">
             <div className="divider"></div>
-            <button className="btn "><FaGoogle/>With Google</button>
+            <button className="btn " onClick={handlegoogleIn}><FaGoogle/>With Google</button>
             </div>
           </div>
         </div>

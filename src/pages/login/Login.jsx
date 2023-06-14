@@ -5,8 +5,32 @@ import { Link } from "react-router-dom";
 import { authProvider } from "../../provider/AuthContext";
 import Swal from "sweetalert2";
 const Login = () => {
-  const {login}=useContext(authProvider)
+  const {login,googleUp}=useContext(authProvider)
     const { register, handleSubmit } = useForm();
+    const handleGoogleIn=()=>{
+      googleUp()
+      .then((result)=>{
+        const currentUser=result.user;
+        // console.log(currentUser.email);
+        fetch('http://localhost:5000/user',{
+          method:"POST",
+          headers:{
+            "content-type":"application/json"
+          },
+          body:JSON.stringify({email:currentUser?.email})
+        })
+        .then(res=>res.json())
+        .then(data=>{
+          if(data.insertedId){
+            console.log(data);
+
+          }
+        })
+      })
+      .catch(error=>{
+        console.error(error.message);
+      })
+    }
   const onSubmit = data => {
     // console.log(data)
     const {email,password}=data;
@@ -65,7 +89,7 @@ const Login = () => {
           </form>
           <div className="card-body pt-1">
           <div className="divider"></div>
-          <button className="btn "><FaGoogle/>With Google</button>
+          <button className="btn " onClick={handleGoogleIn}><FaGoogle/>With Google</button>
           </div>
         </div>
       </div>
