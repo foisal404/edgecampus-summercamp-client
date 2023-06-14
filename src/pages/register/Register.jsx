@@ -20,7 +20,7 @@ const Register = () => {
           headers:{
             "content-type":"application/json"
           },
-          body:JSON.stringify({email:currentUser?.email})
+          body:JSON.stringify({email:currentUser?.email,name:currentUser?.displayName})
         })
         .then(res=>res.json())
         .then(data=>{
@@ -56,7 +56,7 @@ const Register = () => {
           headers:{
             "content-type":"application/json"
           },
-          body:JSON.stringify({email})
+          body:JSON.stringify({email,name})
         })
         .then(res=>res.json())
         .then(data=>{

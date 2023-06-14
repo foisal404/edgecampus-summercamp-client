@@ -1,9 +1,24 @@
+import { useContext, useEffect, useState } from "react";
 import {  FaCalendarAlt, FaHome, FaShoppingCart, FaUsers ,FaWallet } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
+import { authProvider } from "../../provider/AuthContext";
 
 const DashBoard = () => {
+    const {user}=useContext(authProvider)
+    console.log(user);
+    const[role,setRole]=useState(null)
 
-    const isAdmin = true;
+    useEffect(()=>{
+        fetch(`http://localhost:5000/users/role/${user?.email}`)
+        .then(res=>res.json())
+        .then(data=>{
+            console.log(data);
+            setRole(data.role)
+        })
+    },[])
+    console.log(role);
+
+    // const isAdmin = true;
 
     return (
         <div className="drawer lg:drawer-open">
@@ -18,7 +33,7 @@ const DashBoard = () => {
                 <ul className="menu p-4 w-80">
 
                     {
-                        isAdmin ? <>
+                        role==="admin" ? <>
                             <div className="py-10">
                                 <h2 className="text-3xl text-center">Admin DashBoard</h2>
                             </div>

@@ -41,6 +41,7 @@ const AllUsers = () => {
             <tr>
               <th>#</th>
               <th>ID</th>
+              <th>Name</th>
               <th>email</th>
               <th>Role</th>
             </tr>
@@ -53,6 +54,9 @@ const AllUsers = () => {
                     </th>
                     <td>
                       {user._id}
+                    </td>
+                    <td>
+                      {user?.name}
                     </td>
                     <td>{user.email}</td>
                     <th>
