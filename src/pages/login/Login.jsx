@@ -1,9 +1,39 @@
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { authProvider } from "../../provider/AuthContext";
+import Swal from "sweetalert2";
 const Login = () => {
+  const {login}=useContext(authProvider)
     const { register, handleSubmit } = useForm();
-  const onSubmit = data => console.log(data);
+  const onSubmit = data => {
+    // console.log(data)
+    const {email,password}=data;
+    console.log(email,password);
+    login(email,password)
+    .then(result=>{
+      const currentUser=result.user;
+      console.log(currentUser);
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Login done',
+        showConfirmButton: false,
+        timer: 1500
+      })
+    })
+    .catch(error=>{
+      console.error(error.message);
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: `${error.message.slice(17)}`,
+      })
+    })
+  };
+  const {user}=useContext(authProvider);
+  console.log(user);
   return (
     <div className="hero min-h-screen w-full bg-base-200">
       <div className="hero-content flex-col w-full">

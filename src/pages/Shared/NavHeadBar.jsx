@@ -1,10 +1,29 @@
 import { FaMoon } from "react-icons/fa";
 import { BsSun } from "react-icons/bs";
 import navImg from "../../../public/campii.png";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { authProvider } from "../../provider/AuthContext";
+import Swal from "sweetalert2";
 
 const NavHeadBar = () => {
+  const {user,logout}=useContext(authProvider);
+  console.log(user);
+  const handleLogout=()=>{
+    logout()
+    .then(()=>{
+      console.log("logout");
+      Swal.fire({
+        icon: 'success',
+        title: 'logout succesfully',
+        showConfirmButton: false,
+        timer: 1500
+      })
+    })
+    .catch(error=>{
+      console.error(error.message);
+    })
+  }
   //theme set
   const [theme, setTheme] = useState(
     localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
@@ -33,6 +52,7 @@ const NavHeadBar = () => {
       <li><Link to='/'>Instructors</Link></li>
       <li><Link to='/'>Classes</Link></li>
       <li><Link to='/'>Dashboard</Link></li>
+      
     </>
   );
 
@@ -74,6 +94,19 @@ const NavHeadBar = () => {
         </ul>
       </div>
       <div className="navbar-end">
+        
+        {
+          user?<>
+            <label tabIndex={0} className="btn btn-ghost btn-circle avatar md:mx-5 tooltip  tooltip-bottom" data-tip={user?.displayName} >
+            {/* data-tip=`${user?.displayName}` */}
+              <div className="w-10 rounded-full ">
+                <img src={user?.photoURL} className=""/>
+              </div>
+            </label>
+            <button onClick={handleLogout} className="btn btn-sm my-auto">logout</button>
+            </> 
+            :<button className="btn btn-sm"><Link to='/login' className="mx-3">Login</Link></button>
+        }
         <button className="btn btn-square btn-ghost">
           <label className="swap swap-rotate w-12 h-12">
             <input
