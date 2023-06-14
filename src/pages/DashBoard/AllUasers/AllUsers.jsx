@@ -2,7 +2,35 @@ import useAllUsers from "../../../hooks/useAllUsers";
 
 const AllUsers = () => {
   const [users, refetch] = useAllUsers();
-  console.log(users);
+    //   console.log(users);
+    const makeAdmin=(id)=>{
+        console.log(id);
+        fetch(`http://localhost:5000/users/admin/${id}`,{
+            method:"PATCH"
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            if(data.modifiedCount>0){
+                console.log(data);
+                refetch()
+              }
+        })
+
+    }
+    const makeInstructor=(id)=>{
+        console.log(id);
+        fetch(`http://localhost:5000/users/instructor/${id}`,{
+            method:"PATCH"
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            if(data.modifiedCount>0){
+                console.log(data);
+                refetch()
+              }
+        })
+
+    }
   return (
     <div className="w-full px-20">
       {<p>Total Users {users.length}</p>}
@@ -29,9 +57,9 @@ const AllUsers = () => {
                     <td>{user.email}</td>
                     <th>
                       {
-                        user?.role?"user?.role":<>
-                        <button className="btn mx-2">Instructor</button>
-                        <button className="btn">Admin</button>
+                        user?.role? `${user?.role}`:<>
+                        <button className="btn mx-2"  onClick={()=>makeInstructor(user._id)}>Instructor</button>
+                        <button className="btn" onClick={()=>makeAdmin(user._id)}>Admin</button>
                         </>
                       }
                     </th>

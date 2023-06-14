@@ -60,7 +60,10 @@ const Register = () => {
         })
         .then(res=>res.json())
         .then(data=>{
-          console.log(data);
+          if(data.insertedId){
+            console.log(data);
+
+          }
         })
         Swal.fire({
           position: 'top-end',
