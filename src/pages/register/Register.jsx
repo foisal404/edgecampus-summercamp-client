@@ -26,6 +26,13 @@ const Register = () => {
       updateUser(name,photo)
       .then(()=>{
         console.log("profile Updated");
+        fetch('http://localhost:5000/user',{
+          method:"POST",
+          headers:{
+            "content-type":"application/json"
+          },
+          body:JSON.stringify({email})
+        })
         Swal.fire({
           position: 'top-end',
           icon: 'success',
