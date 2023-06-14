@@ -19,6 +19,9 @@ const DashBoard = () => {
 
                     {
                         isAdmin ? <>
+                            <div className="py-10">
+                                <h2 className="text-3xl text-center">Admin DashBoard</h2>
+                            </div>
                             <li><NavLink to="/dashboard/allusers"><FaUsers></FaUsers> All Users</NavLink></li>
                             
                         </> : <>
