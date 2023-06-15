@@ -37,7 +37,8 @@ const DashBoard = () => {
                             <div className="py-10">
                                 <h2 className="text-3xl text-center">Admin DashBoard</h2>
                             </div>
-                            <li><NavLink to="/dashboard/allusers"><FaUsers></FaUsers> All Users</NavLink></li>
+                            <li><NavLink to="/dashboard/allusers"><FaUsers></FaUsers> Manage Users</NavLink></li>
+                            <li><NavLink to="/dashboard/allclasses"><FaUsers></FaUsers> Manage Classes</NavLink></li>
                             
                         </> : <>
                             <li><NavLink to="/dashboard/home"><FaHome></FaHome> User Home</NavLink></li>

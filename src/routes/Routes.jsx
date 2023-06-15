@@ -6,6 +6,8 @@ import Register from "../pages/register/Register";
 import Errorpage from "../pages/errorpage/Errorpage";
 import DashBoard from "../pages/DashBoard/DashBoard";
 import AllUsers from "../pages/DashBoard/AllUasers/AllUsers";
+import AllClasses from "../pages/DashBoard/AllClasses/AllClasses";
+import PrivateRoutes from "./PrivateRoutes";
 
 const router = createBrowserRouter([
     {
@@ -29,11 +31,15 @@ const router = createBrowserRouter([
     },
     {
       path:"/dashboard",
-      element:<DashBoard/>,
+      element:<PrivateRoutes><DashBoard/></PrivateRoutes>,
       children:[
         {
           path:"allusers",
           element:<AllUsers/>
+        },
+        {
+          path:"allclasses",
+          element:<AllClasses/>
         }
       ]
     }
