@@ -2,9 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import {
   FaCalendarAlt,
   FaHome,
-  FaShoppingCart,
   FaUsers,
-  FaWallet,
 } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
 import { authProvider } from "../../provider/AuthContext";
@@ -18,7 +16,7 @@ const DashBoard = () => {
     fetch(`http://localhost:5000/users/role/${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         setRole(data.role);
       });
   }, []);

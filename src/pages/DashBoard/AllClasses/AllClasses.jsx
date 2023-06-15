@@ -1,4 +1,5 @@
 
+import Swal from "sweetalert2";
 import useAllClasses from "../../../hooks/useAllClasses";
 import { useRef, useState } from "react";
 
@@ -33,14 +34,39 @@ const AllClasses = () => {
         }
       });
   };
+
+
   const handleFeedback = (id) => {
     // console.log(id);
     setUid(id)
     window.my_modal_1.showModal()
   };
   const handleForm = () => {
-    console.log(refValue.current.value);
+    const feedback={feedback:refValue.current.value};
+    console.log(feedback);
     console.log(uid);
+    fetch(`http://localhost:5000/class/feedback/${uid}`,{
+      method:"PATCH",
+      headers:{
+        "content-type":"application/json"
+      },
+      body:JSON.stringify(feedback)
+    })
+    .then(res=>res.json())
+    .then(data=>{
+      if(data.modifiedCount>0){
+        console.log(data);
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Feedback added',
+          showConfirmButton: false,
+          timer: 1500
+        })
+      }
+    })
+    
+
   };
   return (
     <div className="w-full px-20">
