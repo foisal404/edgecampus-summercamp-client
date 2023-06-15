@@ -6,6 +6,7 @@ import { useRef, useState } from "react";
 const AllClasses = () => {
   const [classes, refetch] = useAllClasses();
   console.log(classes);
+  
   const [uid,setUid]=useState('')
     const refValue=useRef(null);
   const handleApproved = (id) => {
@@ -106,7 +107,7 @@ const AllClasses = () => {
             </tr>
           </thead>
           <tbody>
-            {classes.map((cls, idx) => (
+            {classes.toReversed().map((cls, idx) => (
               <tr key={cls._id}>
                 <th>{idx + 1}</th>
                 <td>

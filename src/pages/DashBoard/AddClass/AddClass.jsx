@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
 const AddClass = () => {
     const { register,formState: { errors }, handleSubmit } = useForm();
     const {user}=useContext(authProvider)
-    
+    // console.log(user);
   const onSubmit = data => {
     data.status="pending"
     console.log(data);
@@ -60,14 +60,14 @@ const AddClass = () => {
                     <label className="label">
                     <span className="label-text">Instructor Email</span>
                     </label>
-                    <input defaultValue={user?.email} {...register("instructorEmail",{required: true})} className="py-2 bg-slate-100 rounded-md ps-2" />
+                    <input defaultValue={user?.email} readOnly {...register("instructorEmail")} className="py-2 bg-slate-100 rounded-md ps-2" />
                     {errors.instructorEmail && errors.instructorEmail.type === "required" && (<span className="label-text-alt text-red-400">This is required*</span>)}
                 </div>
                 <div className="form-control w-1/2">
                     <label className="label">
                     <span className="label-text">Instructor Name</span>
                     </label>
-                    <input {...register("instructorName",{required: true})} className="py-2 bg-slate-100 rounded-md ps-2" />
+                    <input defaultValue={user?.displayName}  readOnly {...register("instructorName")} className="py-2 bg-slate-100 rounded-md ps-2" />
                     {errors.instructorName && errors.instructorName.type === "required" && (<span className="label-text-alt text-red-400">This is required*</span>)}
                 </div>
               </div>
