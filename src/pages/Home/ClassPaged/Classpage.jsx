@@ -2,8 +2,8 @@ import ClassesCard from "../../../assets/components/ClassesCard";
 import useAllClasses from "../../../hooks/useAllClasses";
 
 const Classpage = () => {
-  const [users] = useAllClasses();
-  const approvedClass = users.filter((user) => user.status === "approved");
+  const [classes] = useAllClasses();
+  const approvedClass = classes.filter((user) => user.status === "approved");
   console.log(approvedClass);
   return (
     <div>
