@@ -8,6 +8,8 @@ import DashBoard from "../pages/DashBoard/DashBoard";
 import AllUsers from "../pages/DashBoard/AllUasers/AllUsers";
 import AllClasses from "../pages/DashBoard/AllClasses/AllClasses";
 import PrivateRoutes from "./PrivateRoutes";
+import AddClass from "../pages/DashBoard/AddClass/AddClass";
+import MyClasses from "../pages/DashBoard/MyClasses/MyClasses";
 
 const router = createBrowserRouter([
     {
@@ -40,6 +42,14 @@ const router = createBrowserRouter([
         {
           path:"allclasses",
           element:<AllClasses/>
+        },
+        {
+          path:"addclass",
+          element:<AddClass/>
+        },
+        {
+          path:"myclass",
+          element:<MyClasses/>
         }
       ]
     }
