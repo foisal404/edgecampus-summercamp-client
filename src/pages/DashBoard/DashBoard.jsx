@@ -70,7 +70,7 @@ const DashBoard = () => {
               </li>
               <li>
                 <NavLink to="/dashboard/myclass">
-                  <FaCalendarAlt></FaCalendarAlt> my cLasses
+                  <FaCalendarAlt></FaCalendarAlt> my Classes
                 </NavLink>
               </li>
               

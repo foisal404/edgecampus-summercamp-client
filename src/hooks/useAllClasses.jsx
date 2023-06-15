@@ -3,13 +3,13 @@ import { authProvider } from "../provider/AuthContext";
 import { useQuery } from "@tanstack/react-query";
 
 
-const useClasses = () => {
+const useAllClasses = () => {
     const { user, loading } = useContext(authProvider);
     const { refetch, data: classes = [] } = useQuery({
         queryKey: ['classes', user?.email],
         enabled: !loading,
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/class/${user?.email}`)
+            const res = await fetch(`http://localhost:5000/classes`)
             return res.json();
         },
         
@@ -18,4 +18,4 @@ const useClasses = () => {
     return [classes, refetch]
 };
 
-export default useClasses;
+export default useAllClasses;
