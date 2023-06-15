@@ -56,6 +56,7 @@ const AllClasses = () => {
     .then(data=>{
       if(data.modifiedCount>0){
         console.log(data);
+        refetch();
         Swal.fire({
           position: 'top-end',
           icon: 'success',

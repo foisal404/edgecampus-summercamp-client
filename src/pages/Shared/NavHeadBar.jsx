@@ -8,7 +8,7 @@ import Swal from "sweetalert2";
 
 const NavHeadBar = () => {
   const {user,logout}=useContext(authProvider);
-  // console.log(user);
+  console.log(user);
   const handleLogout=()=>{
     logout()
     .then(()=>{
@@ -49,9 +49,11 @@ const NavHeadBar = () => {
   const navItems = (
     <>
       <li><Link to='/'>Home</Link></li>
-      <li><Link to='/'>Instructors</Link></li>
-      <li><Link to='/'>Classes</Link></li>
-      <li><Link to='/dashboard'>Dashboard</Link></li>
+      <li><Link to='/istructor'>Instructors</Link></li>
+      <li><Link to='/classes'>Classes</Link></li>
+      {
+        user&& <li><Link to='/dashboard'>Dashboard</Link></li>
+      }
       
     </>
   );

@@ -1,7 +1,9 @@
 import { useContext, useEffect, useState } from "react";
 import {
-  FaCalendarAlt,
+  FaAddressCard,
   FaHome,
+  FaPlus,
+  FaUserTag,
   FaUsers,
 } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
@@ -26,8 +28,10 @@ const DashBoard = () => {
 
   return (
     <div className="drawer lg:drawer-open">
+      
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col items-center justify-center">
+        
         <Outlet></Outlet>
         <label
           htmlFor="my-drawer-2"
@@ -51,7 +55,7 @@ const DashBoard = () => {
               </li>
               <li>
                 <NavLink to="/dashboard/allclasses">
-                  <FaUsers></FaUsers> Manage Classes
+                  <FaUserTag></FaUserTag> Manage Classes
                 </NavLink>
               </li>
             </>
@@ -63,12 +67,30 @@ const DashBoard = () => {
               </div>
               <li>
                 <NavLink to="/dashboard/addclass">
-                  <FaHome></FaHome> Add a Class
+                  <FaPlus></FaPlus> Add a Class
                 </NavLink>
               </li>
               <li>
                 <NavLink to="/dashboard/myclass">
-                  <FaCalendarAlt></FaCalendarAlt> my Classes
+                  <FaAddressCard></FaAddressCard> my Classes
+                </NavLink>
+              </li>
+              
+            </>
+          )}
+          {role === "student" && (
+            <>
+            <div className="py-10">
+                <h2 className="text-3xl text-center">Student DashBoard</h2>
+              </div>
+              <li>
+                <NavLink to="/dashboard/addclass">
+                  <FaPlus></FaPlus> My Selected Classes:
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/myclass">
+                  <FaAddressCard></FaAddressCard> My Enrolled Classes
                 </NavLink>
               </li>
               
@@ -79,7 +101,17 @@ const DashBoard = () => {
           <li>
             <NavLink to="/">
               <FaHome></FaHome> Home
-            </NavLink>{" "}
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/istructor">
+            <FaAddressCard></FaAddressCard> Instructors
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/classes">
+            <FaAddressCard></FaAddressCard> Classes
+            </NavLink>
           </li>
         </ul>
       </div>
