@@ -1,41 +1,67 @@
+
 import useAllClasses from "../../../hooks/useAllClasses";
+import { useRef, useState } from "react";
 
 const AllClasses = () => {
   const [classes, refetch] = useAllClasses();
   console.log(classes);
-  const handleApproved=(id)=>{
+  const [uid,setUid]=useState('')
+    const refValue=useRef(null);
+  const handleApproved = (id) => {
     console.log(id);
-    fetch(`http://localhost:5000/class/approve/${id}`,{
-        method:"PATCH"
+    fetch(`http://localhost:5000/class/approve/${id}`, {
+      method: "PATCH",
     })
-    .then(res=>res.json())
-    .then(data=>{
-        if(data.modifiedCount>0){
-            console.log(data);
-            refetch();
-
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount > 0) {
+          console.log(data);
+          refetch();
         }
-    })
-  }
-  const handleDeny=(id)=>{
+      });
+  };
+  const handleDeny = (id) => {
     console.log(id);
-    fetch(`http://localhost:5000/class/deny/${id}`,{
-        method:"PATCH"
+    fetch(`http://localhost:5000/class/deny/${id}`, {
+      method: "PATCH",
     })
-    .then(res=>res.json())
-    .then(data=>{
-        if(data.modifiedCount>0){
-            console.log(data);
-            refetch();
-
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount > 0) {
+          console.log(data);
+          refetch();
         }
-    })
-  }
-  const handleFeedback=(id)=>{
-    console.log(id);
-  }
+      });
+  };
+  const handleFeedback = (id) => {
+    // console.log(id);
+    setUid(id)
+    window.my_modal_1.showModal()
+  };
+  const handleForm = () => {
+    console.log(refValue.current.value);
+    console.log(uid);
+  };
   return (
     <div className="w-full px-20">
+      {/* handleFeedback(cls._id) */}
+
+      {/* modal ---------------------------------- */}
+      <dialog id="my_modal_1" className="modal">
+        <form method="dialog" className="modal-box">
+          <h3 className="font-bold text-lg">Feedback!</h3>
+          <input type="text" ref={refValue} className="w-full bg-slate-200 py-3" />
+          <div className="modal-action">
+            {/* if there is a button in form, it will close the modal */}
+            <button className="btn" onClick={handleForm}>
+              post
+            </button>
+            <button className="btn">Close</button>
+          </div>
+        </form>
+      </dialog>
+      {/* modal ---------------------------------- */}
+
       {<p>Total Class {classes.length}</p>}
       <div className="overflow-x-auto">
         <table className="table ">
@@ -85,11 +111,30 @@ const AllClasses = () => {
                   {cls?.status}
                 </td>
                 <td>
-                    <div className="flex flex-col my-auto justify-center gap-2">
-                        <button onClick={()=>handleApproved(cls._id)} className={`btn btn-sm bg-green-400  ${cls?.status!== "pending"&&"btn-disabled"}`}>Approve</button>
-                        <button onClick={()=>handleDeny(cls._id)} className={`btn btn-sm bg-red-400  ${cls?.status!== "pending"&&"btn-disabled"}`}>Deny</button>
-                        <button onClick={()=>handleFeedback(cls._id)} className="btn btn-sm bg-orange-400">send feedback</button>
-                    </div>
+                  <div className="flex flex-col my-auto justify-center gap-2">
+                    <button
+                      onClick={() => handleApproved(cls._id)}
+                      className={`btn btn-sm bg-green-400 lowercase ${
+                        cls?.status !== "pending" && "btn-disabled"
+                      }`}
+                    >
+                      Approve
+                    </button>
+                    <button
+                      onClick={() => handleDeny(cls._id)}
+                      className={`btn btn-sm bg-red-400 lowercase  ${
+                        cls?.status !== "pending" && "btn-disabled"
+                      }`}
+                    >
+                      Deny
+                    </button>
+                    <button
+                      onClick={() => handleFeedback(cls._id)}
+                      className="btn btn-sm bg-orange-400 lowercase"
+                    >
+                      feedback
+                    </button>
+                  </div>
                 </td>
               </tr>
             ))}
