@@ -2,6 +2,7 @@
 import { useContext } from "react";
 import {  useForm } from "react-hook-form";
 import { authProvider } from "../../../provider/AuthContext";
+import Swal from "sweetalert2";
 
 const AddClass = () => {
     const { register,formState: { errors }, handleSubmit } = useForm();
@@ -10,6 +11,26 @@ const AddClass = () => {
   const onSubmit = data => {
     data.status="pending"
     console.log(data);
+    fetch('http://localhost:5000/class',{
+        method:"POST",
+        headers:{
+            "content-type":"application/json"
+        },
+        body:JSON.stringify(data)
+    })
+    .then(res=>res.json())
+    .then(data=>{
+        if(data.insertedId){
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Class Added',
+                showConfirmButton: false,
+                timer: 1500
+              })
+            console.log(data);
+        }
+    })
   };
     return (
         <div className="hero min-h-screen w-full bg-base-200">
