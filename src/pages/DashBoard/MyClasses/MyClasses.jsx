@@ -28,7 +28,7 @@ const MyClasses = () => {
                   className={
                     (cls?.status === "pending" && "text-yellow-500") ||
                     (cls?.status === "approved" && "text-green-500") ||
-                    (cls?.status === "denied" && "text-green-500")
+                    (cls?.status === "denied" && "text-red-500")
                   }
                 >
                   {cls?.status}
