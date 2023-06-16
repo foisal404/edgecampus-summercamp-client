@@ -1,10 +1,10 @@
-
+import icon from '../../../public/campii.png'
 
 const Footerbar = () => {
     return (
         <footer className="footer p-10 bg-neutral text-neutral-content">
   <div>
-    <img src="/public/campii.png" alt="" className="h-24 w-24"/>
+    <img src={icon} alt="" className="h-24 w-24"/>
     <p>EdgeCampus Summer Camp<br/>Providing a memorable learning experience</p>
   </div> 
   <div>
