@@ -1,4 +1,4 @@
-## Welcome to EdgeCampus Summer Sports Academy!
+## Welcome to EdgeCampus Summer Sports Camp!
 - this site about sports related camp in summer
 - had Admin ,Instructor,student role
 - has firebase Authentication 
