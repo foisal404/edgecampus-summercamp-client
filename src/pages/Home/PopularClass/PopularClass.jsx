@@ -56,7 +56,7 @@ const PopularClass = () => {
                   <h2 className="card-title">{cls.className}</h2>
                   <p className="text-green-600">${cls.price}</p>
                   <p><FaUserAlt className="inline me-2" />
-                    {cls.seats}</p>
+                    {cls.students}</p>
                     <p>Instructor: {cls.instructorName}</p>
                   <div className="mx-auto">
                     <button className="btn btn-wide mx-auto">details</button>

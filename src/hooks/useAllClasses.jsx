@@ -9,7 +9,7 @@ const useAllClasses = () => {
         queryKey: ['classes', user?.email],
         enabled: !loading,
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/classes`)
+            const res = await fetch(`https://edge-campus-server.vercel.app/classes`)
             return res.json();
         },
         

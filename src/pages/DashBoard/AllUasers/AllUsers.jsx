@@ -5,7 +5,7 @@ const AllUsers = () => {
   //   console.log(users);
   const makeAdmin = (id) => {
     console.log(id);
-    fetch(`http://localhost:5000/users/admin/${id}`, {
+    fetch(`https://edge-campus-server.vercel.app/users/admin/${id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())
@@ -18,7 +18,7 @@ const AllUsers = () => {
   };
   const makeInstructor = (id) => {
     console.log(id);
-    fetch(`http://localhost:5000/users/instructor/${id}`, {
+    fetch(`https://edge-campus-server.vercel.app/users/instructor/${id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())

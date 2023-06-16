@@ -18,7 +18,7 @@ const Login = () => {
       .then((result)=>{
         const currentUser=result.user;
         // console.log(currentUser.email);
-        fetch('http://localhost:5000/user',{
+        fetch('https://edge-campus-server.vercel.app/user',{
           method:"POST",
           headers:{
             "content-type":"application/json"

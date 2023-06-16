@@ -11,7 +11,7 @@ const AllClasses = () => {
     const refValue=useRef(null);
   const handleApproved = (id) => {
     console.log(id);
-    fetch(`http://localhost:5000/class/approve/${id}`, {
+    fetch(`https://edge-campus-server.vercel.app/class/approve/${id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())
@@ -24,7 +24,7 @@ const AllClasses = () => {
   };
   const handleDeny = (id) => {
     console.log(id);
-    fetch(`http://localhost:5000/class/deny/${id}`, {
+    fetch(`https://edge-campus-server.vercel.app/class/deny/${id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())
@@ -46,7 +46,7 @@ const AllClasses = () => {
     const feedback={feedback:refValue.current.value};
     console.log(feedback);
     console.log(uid);
-    fetch(`http://localhost:5000/class/feedback/${uid}`,{
+    fetch(`https://edge-campus-server.vercel.app/class/feedback/${uid}`,{
       method:"PATCH",
       headers:{
         "content-type":"application/json"

@@ -9,9 +9,10 @@ const AddClass = () => {
     const {user}=useContext(authProvider)
     // console.log(user);
   const onSubmit = data => {
-    data.status="pending"
+    data.status="pending";
+    data.students=0;
     console.log(data);
-    fetch('http://localhost:5000/class',{
+    fetch('https://edge-campus-server.vercel.app/class',{
         method:"POST",
         headers:{
             "content-type":"application/json"

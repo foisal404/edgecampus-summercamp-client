@@ -34,7 +34,7 @@ const MyClasses = () => {
                   {cls?.status}
                 </td>
                 <td>{cls?.feedback}</td>
-                <td>{cls?.students || 0}</td>
+                <td>{cls?.students}</td>
                 <td>
                   <button className="btn btn-sm bg-slate-400">Update</button>
                 </td>

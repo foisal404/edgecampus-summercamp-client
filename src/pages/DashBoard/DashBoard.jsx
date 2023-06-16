@@ -15,7 +15,7 @@ const DashBoard = () => {
   const [role, setRole] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/users/role/${user?.email}`)
+    fetch(`https://edge-campus-server.vercel.app/users/role/${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);
@@ -84,12 +84,12 @@ const DashBoard = () => {
                 <h2 className="text-3xl text-center">Student DashBoard</h2>
               </div>
               <li>
-                <NavLink to="/dashboard/addclass">
+                <NavLink to="/dashboard/mycart">
                   <FaPlus></FaPlus> My Selected Classes:
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/myclass">
+                <NavLink to="/dashboard/myenroll">
                   <FaAddressCard></FaAddressCard> My Enrolled Classes
                 </NavLink>
               </li>
