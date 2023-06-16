@@ -2,7 +2,7 @@ import { useContext } from "react";
 import ClassesCard from "../../../assets/components/ClassesCard";
 import useAllClasses from "../../../hooks/useAllClasses";
 import { authProvider } from "../../../provider/AuthContext";
-import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import {  useLocation, useNavigate } from "react-router-dom";
 
 const Classpage = () => {
   const [classes] = useAllClasses();
@@ -17,7 +17,7 @@ const Classpage = () => {
       console.log("object"); 
     }
     else{
-      navigate('/login', {state:{ from: location }}    )
+      navigate('/login', {state:{ from: location }})
       console.log("hell");
     }
 
