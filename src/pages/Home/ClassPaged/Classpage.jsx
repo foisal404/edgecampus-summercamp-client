@@ -4,10 +4,12 @@ import useAllClasses from "../../../hooks/useAllClasses";
 import { authProvider } from "../../../provider/AuthContext";
 import {  useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { motion, useScroll } from "framer-motion";
 
 const Classpage = () => {
   const [classes] = useAllClasses();
   const {user}=useContext(authProvider)
+  const { scrollYProgress } = useScroll();
   // console.log(user);
   const location=useLocation()
   const navigate=useNavigate()
@@ -47,6 +49,11 @@ const Classpage = () => {
   }
   return (
     <div>
+      
+      <motion.div
+        className="progress-bar z-10 bg-green-200 h-2 top-0 right-0 left-0 fixed origin-[0%]"
+        style={{ scaleX: scrollYProgress }}
+      />
       <h2 className="text-center text-3xl py-10 text-gray-500">
         --- All Classes ---
       </h2>
