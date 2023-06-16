@@ -6,9 +6,9 @@ import banner10 from "../../../assets/image/banner10.jpg";
 const Slider = () => {
     const bannerInfo = (
         <div className="absolute  flex items-center top-0 left-0 h-full bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)]  text-white  ">
-          <div className="md:w-5/12 space-y-5 pl-10">
+          <div className="md:w-5/12 space-y-5 mx-5 md:pl-10">
             <h2 className=" text-4xl md:text-7xl ">Welcome to <span className="text-zinc-500">EdgeCampus</span> Summer Sports Academy!</h2>
-            <p className="text-zinc-500">
+            <p className="text-zinc-500 ">
             Unleash Your Potential in the World of Sports and Learning,Our academy is dedicated to providing a cutting-edge environment where aspiring students and eager learners can excel.
             </p>
             
