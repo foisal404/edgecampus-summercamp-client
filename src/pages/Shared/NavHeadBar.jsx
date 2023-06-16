@@ -55,11 +55,12 @@ const NavHeadBar = () => {
         user&& <li><Link to='/dashboard'>Dashboard</Link></li>
       }
       
+      
     </>
   );
 
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-base-100 flex md:flex-none flex-col items-start md:items-center  md:flex-row">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -80,7 +81,7 @@ const NavHeadBar = () => {
           </label>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+            className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 z-10"
           >
             {navItems}
           </ul>
@@ -89,13 +90,25 @@ const NavHeadBar = () => {
           <img src={navImg} alt="" className="w-16 h-10" />
           edgeCampus
         </a>
+        <button className="btn btn-square btn-ghost">
+          <label className="swap swap-rotate w-12 h-12">
+            <input
+              type="checkbox"
+              onChange={handleToggle}
+              // show toggle image based on localstorage theme
+              checked={theme === "light" ? false : true}
+            />
+            <BsSun className="w-6 h-6 swap-on" />
+            <FaMoon alt="dark" className="w-6 h-6 swap-off" />
+          </label>
+        </button>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           {navItems}
         </ul>
       </div>
-      <div className="navbar-end">
+      <div className="lg:navbar-end ">
         
         {
           user?<>
@@ -109,18 +122,7 @@ const NavHeadBar = () => {
             </> 
             :<button className="btn btn-sm"><Link to='/login' className="mx-3">Login</Link></button>
         }
-        <button className="btn btn-square btn-ghost">
-          <label className="swap swap-rotate w-12 h-12">
-            <input
-              type="checkbox"
-              onChange={handleToggle}
-              // show toggle image based on localstorage theme
-              checked={theme === "light" ? false : true}
-            />
-            <BsSun className="w-6 h-6 swap-on" />
-            <FaMoon alt="dark" className="w-6 h-6 swap-off" />
-          </label>
-        </button>
+        
       </div>
     </div>
   );

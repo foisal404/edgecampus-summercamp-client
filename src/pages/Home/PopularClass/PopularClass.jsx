@@ -50,16 +50,16 @@ const PopularClass = () => {
               <div className="p-5">
                 <div className="card card-compact  bg-base-100 shadow-xl">
                 <figure>
-                  <img src={cls.classPhoto} className="h-72 mx-auto" alt="" />
+                  <img src={cls.classPhoto} className="h-72  mx-auto" alt="" />
                 </figure>
-                <div className="card-body -20">
+                <div className="card-body">
                   <h2 className="card-title">{cls.className}</h2>
                   <p className="text-green-600">${cls.price}</p>
                   <p><FaUserAlt className="inline me-2" />
                     {cls.seats}</p>
                     <p>Instructor: {cls.instructorName}</p>
-                  <div className="card-actions justify-end">
-                    <button className="btn btn-wide">details</button>
+                  <div className="mx-auto">
+                    <button className="btn btn-wide mx-auto">details</button>
                   </div>
                 </div>
               </div>
