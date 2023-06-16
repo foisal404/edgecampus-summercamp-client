@@ -1,18 +1,13 @@
 import { useContext, useEffect, useState } from "react";
-import {
-  FaAddressCard,
-  FaHome,
-  FaPlus,
-  FaUserTag,
-  FaUsers,
-} from "react-icons/fa";
+import {FaAddressCard,FaHome,FaPlus,FaUserTag,FaUsers,} from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
 import { authProvider } from "../../provider/AuthContext";
 
 const DashBoard = () => {
   const { user } = useContext(authProvider);
-  console.log(user);
+  // console.log(user);
   const [role, setRole] = useState(null);
+  const [loader,setloader]=useState("true")
 
   useEffect(() => {
     fetch(`https://edge-campus-server.vercel.app/users/role/${user?.email}`)
@@ -20,9 +15,10 @@ const DashBoard = () => {
       .then((data) => {
         // console.log(data);
         setRole(data.role);
+        setloader(false)
       });
   }, []);
-  console.log(role);
+  // console.log(role);
 
   // const isAdmin = true;
 
@@ -43,6 +39,10 @@ const DashBoard = () => {
       <div className="drawer-side bg-slate-300">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
         <ul className="menu p-4 w-80">
+          {/* loading for role wise loading time */}
+          {
+            loader&& <span className="loading loading-ring loading-lg mx-auto"></span>
+          }
           {role === "admin" && (
             <>
               <div className="py-10">

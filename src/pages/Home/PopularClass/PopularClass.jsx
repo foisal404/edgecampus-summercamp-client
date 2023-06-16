@@ -15,7 +15,7 @@ const PopularClass = () => {
   const popularClasses = classes
     .filter((user) => user.status === "approved")
     .slice(0, 6);
-  console.log(popularClasses);
+  // console.log(popularClasses);
   return (
     <div className=" md:px-20 md:p-10">
       <h2 className="text-center text-3xl py-10 text-gray-500">

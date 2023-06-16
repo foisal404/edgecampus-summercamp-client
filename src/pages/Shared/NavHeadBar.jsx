@@ -8,7 +8,7 @@ import Swal from "sweetalert2";
 
 const NavHeadBar = () => {
   const {user,logout}=useContext(authProvider);
-  console.log(user);
+  // console.log(user);
   const handleLogout=()=>{
     logout()
     .then(()=>{
@@ -24,7 +24,7 @@ const NavHeadBar = () => {
       console.error(error.message);
     })
   }
-  //theme set
+  //theme set-----------------------------
   const [theme, setTheme] = useState(
     localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
   );
@@ -38,14 +38,12 @@ const NavHeadBar = () => {
     }
   };
 
-  // set theme state in localstorage on mount & also update localstorage on state change
   useEffect(() => {
     localStorage.setItem("theme", theme);
     const localTheme = localStorage.getItem("theme");
-    // add custom data-theme attribute to html tag required to update theme using DaisyUI
     document.querySelector("html").setAttribute("data-theme", localTheme);
   }, [theme]);
-
+//-----------------------------------------------
   const navItems = (
     <>
       <li><Link to='/'>Home</Link></li>
@@ -54,8 +52,6 @@ const NavHeadBar = () => {
       {
         user&& <li><Link to='/dashboard'>Dashboard</Link></li>
       }
-      
-      
     </>
   );
 

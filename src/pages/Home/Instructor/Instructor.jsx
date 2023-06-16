@@ -4,7 +4,7 @@ import useAllUsers from "../../../hooks/useAllUsers";
 const Instructor = () => {
   const [users] = useAllUsers();
   const instructors = users.filter((user) => user.role === "instructor");
-  console.log(instructors);
+  // console.log(instructors);
   return (
     <div>
       <h2 className="text-center text-3xl py-10 text-gray-500">--- All Instructors ---</h2>
