@@ -57,7 +57,7 @@ const Classpage = () => {
       <h2 className="text-center text-3xl py-10 text-gray-500">
         --- All Classes ---
       </h2>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 p-10">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 p-2 md:p-10">
         {approvedClass.map((cls) => (
           <ClassesCard key={cls._id} data={cls} handleSelectClass={handleSelectClass}></ClassesCard>
         ))}

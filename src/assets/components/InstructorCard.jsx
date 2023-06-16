@@ -3,7 +3,7 @@ import { FaFacebookMessenger, FaMailBulk, FaPhone } from "react-icons/fa";
 const InstructorCard = ({ data }) => {
   const { photo, email, name } = data;
   return (
-    <div className="card w-96 bg-base-100 shadow-xl">
+    <div className="card md:w-96 px-10 bg-base-100 shadow-xl">
       <figure className="pt-5 ">
         <img
           src={photo}

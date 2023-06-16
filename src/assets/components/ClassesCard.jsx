@@ -27,8 +27,8 @@ const ClassesCard = ({ data,handleSelectClass }) => {
     status,
   } = data;
   return (
-    <div className={`card card-side bg-base-100 shadow-xl p-10 ${seats<1 && 'bg-red-200'} `}>
-      <figure className="w-2/3 h-60">
+    <div className={`card md:card-side bg-base-100 shadow-xl p-2 md:p-10 ${seats<1 && 'bg-red-200'} `}>
+      <figure className="md:w-2/3 md:h-60">
         <img src={classPhoto} alt="Movie" className="w-full h-full rounded-2xl"/>
       </figure>
       <div className="card-body">
