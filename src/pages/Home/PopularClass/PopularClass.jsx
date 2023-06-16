@@ -17,35 +17,52 @@ const PopularClass = () => {
     .slice(0, 6);
   console.log(popularClasses);
   return (
-    <div className="px-20 p-10">
+    <div className=" md:px-20 md:p-10">
       <h2 className="text-center text-3xl py-10 text-gray-500">
         Popular Classes
       </h2>
       <>
         <Swiper
-          
-          slidesPerView={3}
+          slidesPerView={1}
           spaceBetween={30}
           pagination={{
             clickable: true,
           }}
           modules={[Pagination]}
+          breakpoints={{
+            // when window width is >= 480px
+            480: {
+              slidesPerView: 2,
+            },
+            // when window width is >= 768px
+            768: {
+              slidesPerView: 3,
+            },
+            // when window width is >= 1024px
+            1024: {
+              slidesPerView: 4,
+            },
+          }}
           className="mySwiper"
         >
           {popularClasses.map((cls) => (
             <SwiperSlide key={cls._id}>
-              <div className="pb-20 pt-10">
-                <img src={cls.classPhoto} className="h-72 mx-auto" alt="" />
-                <div className="text-sm">
-                  <p className="text-xl">{cls.className}</p>
+              <div className="p-5">
+                <div className="card card-compact  bg-base-100 shadow-xl">
+                <figure>
+                  <img src={cls.classPhoto} className="h-72 mx-auto" alt="" />
+                </figure>
+                <div className="card-body -20">
+                  <h2 className="card-title">{cls.className}</h2>
                   <p className="text-green-600">${cls.price}</p>
-                  <p>
-                    <FaUserAlt className="inline me-2" />
-                    {cls.seats}
-                  </p>
-                  <p>Instructor: {cls.instructorName}</p>
-                  <p>{cls.feedback && `Feedback : ${cls.feedback}`}</p>
+                  <p><FaUserAlt className="inline me-2" />
+                    {cls.seats}</p>
+                    <p>Instructor: {cls.instructorName}</p>
+                  <div className="card-actions justify-end">
+                    <button className="btn btn-wide">details</button>
+                  </div>
                 </div>
+              </div>
               </div>
             </SwiperSlide>
           ))}
