@@ -1,6 +1,6 @@
 import { FaBookmark } from "react-icons/fa";
 
-const ClassesCard = ({ data }) => {
+const ClassesCard = ({ data,handleSelectClass }) => {
   const {
     className,
     classPhoto,
@@ -18,7 +18,7 @@ const ClassesCard = ({ data }) => {
       </figure>
       <div className="card-body">
         <div className="card-actions justify-end">
-          <button className="btn">
+          <button className="btn" onClick={handleSelectClass}>
             <FaBookmark />
           </button>
         </div>

@@ -12,7 +12,9 @@ import { FaUserAlt } from "react-icons/fa";
 
 const PopularClass = () => {
   const [classes] = useAllClasses();
-  const popularClasses = classes.filter((user) => user.status === "approved").slice(0, 6);
+  const popularClasses = classes
+    .filter((user) => user.status === "approved")
+    .slice(0, 6);
   console.log(popularClasses);
   return (
     <div className="px-20 p-10">
@@ -21,6 +23,7 @@ const PopularClass = () => {
       </h2>
       <>
         <Swiper
+          
           slidesPerView={3}
           spaceBetween={30}
           pagination={{
@@ -41,7 +44,7 @@ const PopularClass = () => {
                     {cls.seats}
                   </p>
                   <p>Instructor: {cls.instructorName}</p>
-                  <p>{cls.feedback&& `Feedback : ${cls.feedback}`}</p>
+                  <p>{cls.feedback && `Feedback : ${cls.feedback}`}</p>
                 </div>
               </div>
             </SwiperSlide>

@@ -1,10 +1,16 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { authProvider } from "../../provider/AuthContext";
 import Swal from "sweetalert2";
 const Login = () => {
+  const location=useLocation();
+  let navigate = useNavigate();
+
+  console.log(location);
+  let from = location.state?.from?.pathname || "/";
+  console.log(from);
   const {login,googleUp}=useContext(authProvider)
     const { register, handleSubmit } = useForm();
     const handleGoogleIn=()=>{
@@ -23,6 +29,7 @@ const Login = () => {
         .then(data=>{
           if(data.insertedId){
             console.log(data);
+            navigate(from, { replace: true });
 
           }
         })
@@ -46,6 +53,8 @@ const Login = () => {
         showConfirmButton: false,
         timer: 1500
       })
+      navigate(from, { replace: true });
+
     })
     .catch(error=>{
       console.error(error.message);
